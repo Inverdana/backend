@@ -1,0 +1,6 @@
+Django==2.2.14
+django-cors-headers
+django-extra-fields
+djangorestframework
+djangorestframework-simplejwt
+djoser
