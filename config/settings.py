@@ -25,7 +25,7 @@ SECRET_KEY = 'o2xy9nv@cghav3a158&u7qs5lgc2@v!3r&gfvw5kvn(5@-=tch'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -58,8 +58,10 @@ DJOSER = {
     }
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -96,10 +98,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'develop',
+        'NAME': 'inverdana',
         'USER': 'doadmin',
-        'PASSWORD': 'unu0c9z1dn96g64p',
-        'HOST': 'db-postgresql-nyc1-47285-do-user-7630259-0.a.db.ondigitalocean.com',
+        'PASSWORD': 'kp0f620aepixl3t9',
+        'HOST': 'db-postgresql-nyc1-09281-do-user-7630259-0.a.db.ondigitalocean.com',
         'PORT': '25060',
     }
 }
