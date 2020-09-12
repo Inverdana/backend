@@ -4,3 +4,4 @@ django-extra-fields
 djangorestframework
 djangorestframework-simplejwt
 djoser
+social-auth-app-django

@@ -45,8 +45,10 @@ INSTALLED_APPS = [
     'logros',
     'api',
     'catalogo',
+    'social_django',
 ]
 AUTH_USER_MODEL = 'usuarios.Usuario'
+SOCIAL_AUTH_POSTGRES_JSONFIELD = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -59,6 +61,11 @@ DJOSER = {
        'current_user': 'api.serializers.UsuarioYoSerializer',
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -101,8 +108,8 @@ DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'inverdana',
-        'USER': 'doadmin',
-        'PASSWORD': 'kp0f620aepixl3t9',
+        'USER': 'inverdana',
+        'PASSWORD': 'o27tf5st0p1gezif',
         'HOST': 'db-postgresql-nyc1-09281-do-user-7630259-0.a.db.ondigitalocean.com',
         'PORT': '25060',
     }
