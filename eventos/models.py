@@ -8,3 +8,6 @@ class Evento(models.Model):
     fecha_fin = models.DateField()
     cupo = models.IntegerField(validators=[MinValueValidator(1)])
     lugar = models.CharField(max_length=255)
+
+    def __str__(self):
+        return "%s" % self.nombre
