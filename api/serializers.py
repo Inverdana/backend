@@ -36,7 +36,7 @@ class UsuarioYoSerializer(serializers.ModelSerializer):
     logros = LogroSerializer(many=True)
     class Meta:
         model = User
-        fields = ('id', 'email','first_name','last_name','puntaje','participaciones','logros')
+        fields = ('username', 'email','first_name','last_name','puntaje','participaciones','logros')
 
 class FotoSerializer(serializers.ModelSerializer):
     class Meta:

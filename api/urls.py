@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 from djoser import views
 from  rest_framework.routers import DefaultRouter
-from .views import EventosViewSet,PostViewSet,ArbolesCatalogoViewSet
+from .views import EventosViewSet,PostViewSet,ArbolesCatalogoViewSet,AmigosViewSet
 router = DefaultRouter()
 router.register("posts", PostViewSet)
 
@@ -22,5 +22,8 @@ urlpatterns = [
     })),
     path('catalogo/',ArbolesCatalogoViewSet.as_view({
         'get':'list'
+    })),
+    path('amigo/<str:uname>',AmigosViewSet.as_view({
+        'post':'referir'
     }))
 ] + router.urls
