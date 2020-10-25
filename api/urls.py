@@ -1,6 +1,6 @@
   
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from djoser import views
 from  rest_framework.routers import DefaultRouter
 from .views import EventosViewSet,PostViewSet,ArbolesCatalogoViewSet
@@ -22,5 +22,6 @@ urlpatterns = [
     })),
     path('catalogo/',ArbolesCatalogoViewSet.as_view({
         'get':'list'
-    }))
+    })),
+    path('auth/', include('djoser.social.urls')),
 ] + router.urls
