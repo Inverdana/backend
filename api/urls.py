@@ -23,7 +23,7 @@ urlpatterns = [
     path('catalogo/',ArbolesCatalogoViewSet.as_view({
         'get':'list'
     })),
-    path('amigo/<str:uname>',AmigosViewSet.as_view({
+    path('amigo/',AmigosViewSet.as_view({
         'post':'referir'
     }))
 ] + router.urls

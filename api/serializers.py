@@ -34,9 +34,10 @@ class ParticipacionSerializer(serializers.ModelSerializer):
 class UsuarioYoSerializer(serializers.ModelSerializer):
     participaciones = ParticipacionSerializer(many=True)
     logros = LogroSerializer(many=True)
+    referido_nombre = serializers.CharField(source='referido.first_name', read_only=True)
     class Meta:
         model = User
-        fields = ('username', 'email','first_name','last_name','puntaje','participaciones','logros')
+        fields = ('username', 'email','first_name','last_name','puntaje','participaciones','logros', 'referido_nombre')
 
 class FotoSerializer(serializers.ModelSerializer):
     class Meta:

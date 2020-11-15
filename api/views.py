@@ -49,9 +49,9 @@ class ArbolesCatalogoViewSet(viewsets.ModelViewSet):
 
 class AmigosViewSet(viewsets.ModelViewSet):
     @action(["post"], detail=True)
-    def referir(self, request, uname=None):
+    def referir(self, request):
         try:
-            referente = Usuario.objects.get(username=uname)
+            referente = Usuario.objects.get(username=request.data['uname'])
             referido = self.request.user
             if referente == referido:
                 return Response(status=status.HTTP_403_FORBIDDEN)
