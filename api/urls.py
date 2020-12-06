@@ -1,6 +1,6 @@
   
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from djoser import views
 from  rest_framework.routers import DefaultRouter
 from .views import EventosViewSet,PostViewSet,ArbolesCatalogoViewSet,AmigosViewSet
@@ -25,5 +25,6 @@ urlpatterns = [
     })),
     path('amigo/',AmigosViewSet.as_view({
         'post':'referir'
-    }))
+    })),
+    path('auth/', include('djoser.social.urls')),
 ] + router.urls
