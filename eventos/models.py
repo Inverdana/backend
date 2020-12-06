@@ -3,7 +3,7 @@ from django.core.validators import MinValueValidator
 
 class Evento(models.Model):
     nombre = models.CharField(max_length=255)
-    imagen = models.FileField(upload_to='arboles')
+    # imagen = models.FileField(upload_to='arboles')
     descripcion = models.TextField(max_length=1024)
     fecha_inicio = models.DateField()
     fecha_fin = models.DateField()

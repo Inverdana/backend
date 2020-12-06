@@ -14,6 +14,7 @@ class EventosViewSet(viewsets.ModelViewSet):
     queryset = Evento.objects.all()
     @action(["post"], detail=True)
     def inscribirse(self, request, pk=None):
+        print(request.user)
         try:
             Participacion.objects.get(evento=pk,usuario=request.user)
             return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
@@ -45,3 +46,18 @@ class PostViewSet(viewsets.ModelViewSet):
 class ArbolesCatalogoViewSet(viewsets.ModelViewSet):
     serializer_class = ArbolSerializer
     queryset = Arbol.objects.all()
+
+class AmigosViewSet(viewsets.ModelViewSet):
+    @action(["post"], detail=True)
+    def referir(self, request):
+        try:
+            referente = Usuario.objects.get(username=request.data['uname'])
+            referido = self.request.user
+            if referente == referido:
+                return Response(status=status.HTTP_403_FORBIDDEN)
+            referido.referido = referente
+            referido.save()
+        except  Usuario.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        return Response(status=status.HTTP_200_OK)
